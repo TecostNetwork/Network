@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-05-31T13:14:01.809Z" agent="5.0 (Windows)" etag="3Gw1MO7QRwXrXxjMOfEA" version="14.6.12" type="github">
+<mxfile host="app.diagrams.net" modified="2021-05-31T13:14:10.483Z" agent="5.0 (Windows)" etag="KP4kfj5BFNzWE_AMEnCI" version="14.6.12" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2570" dy="1122" grid="1" gridSize="4" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -175,9 +175,6 @@
         </mxCell>
         <mxCell id="TWmK3YpH7crGE-YO0dlQ-88" value="Demande d&#39;intervention" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;fontFamily=Verdana;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="16" width="800" height="32" as="geometry" />
-        </mxCell>
-        <mxCell id="JP6AgAqf46H4oGvy9I8E-0" value="&lt;h1&gt;Heading&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="-448" y="208" width="190" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
