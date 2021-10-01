@@ -2,12 +2,9 @@ name: Lint
 on:
   push:
   pull_request:
-  schedule:
-    # Run linter every week to catch regressions from external dependencies.
-    - cron: 17 9 * * 1
+  workflow_dispatch:
 
 jobs:
-
   update-toc:
     name: Generator TOC and auto-commit
     runs-on: ubuntu-latest
@@ -19,54 +16,7 @@ jobs:
       - name: Generate full TOC
         run: |
           doctoc --github --notitle readme.md
-      - name: Remove blacklisted TOC entries
-        # See: https://github.com/sindresorhus/awesome-lint/blob/v0.13.0/rules/toc.js#L15-L20
-        run: |
-          gawk -i inplace '!/^- \[(Contribute|Contributing|Licence|License)\]\(#.+\)$/{print}' ./readme.md
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_author: "Kevin Deldycke <kevin@deldycke.com>"
-          commit_message: "[lint] Update TOC."
-          file_pattern: readme.md
-
-  lint-markdown:
-    name: Lint markdown and create a PR
-    needs: update-toc
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Auto-fix Markdown
-      uses: avto-dev/markdown-lint@v1
-      # Non-fixable markdown issues will return non-zero error code. Allow that
-      # step to fail so we can proceed with creating the auto-fix PR below.
-      continue-on-error: true
-      with:
-        fix: true
-        args: './**/*.md'
-    - uses: peter-evans/create-pull-request@v2
-      with:
-        author: "Kevin Deldycke <kevin@deldycke.com>"
-        commit-message: "Lint Markdown."
-        title: "Lint Markdown"
-        body: >
-          [Auto-generated on run #${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          as defined by [workflow action](https://github.com/${{ github.repository }}/blob/develop/.github/workflows/lint.yaml).
-        labels: "CI/CD"
-        assignees: kdeldycke
-        branch: lint-markdown
-    - name: Re-run linter
-      uses: avto-dev/markdown-lint@v1
-      with:
-        args: './**/*.md'
-
-  lint-awesome:
-    name: Lint awesome list
-    needs: lint-markdown
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          # Fetch all history to please linter's age checks.
-          fetch-depth: 0
-      - uses: max/awesome-lint@v2.0.0
+      - name: Commit changes
+        run: git commit -a -m 'toc update'
+      - name: Push changes
+        run: git push
