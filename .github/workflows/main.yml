@@ -16,6 +16,10 @@ jobs:
       - name: Generate full TOC
         run: |
           doctoc --github --notitle readme.md
+      - name: Set author
+        run: git config user.email "you@example.com"
+      - name: Set mail
+        run: git config user.name "Your Name"
       - name: Commit changes
         run: git commit -a -m 'toc update'
       - name: Push changes
