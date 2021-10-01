@@ -13,9 +13,11 @@ jobs:
         run: |
           sudo npm install -g doctoc
       - uses: actions/checkout@v2
+        with:
+          repository: ${{github.repository}}.wiki
       - name: Generate full TOC
         run: |
-          doctoc --github --notitle readme.md
+          doctoc --github --notitle Home.md
       - name: Set author
         run: git config user.email "you@example.com"
       - name: Set mail
