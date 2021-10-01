@@ -60,24 +60,6 @@ jobs:
       with:
         args: './**/*.md'
 
-  fix-typo:
-    name: Typo auto-fix
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: sobolevn/misspell-fixer-action@0.1.0
-      - uses: peter-evans/create-pull-request@v2
-        with:
-          author: "Kevin Deldycke <kevin@deldycke.com>"
-          commit-message: "Fix typo."
-          title: "Typo"
-          body: >
-            [Auto-generated on run #${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            as defined by [workflow action](https://github.com/${{ github.repository }}/blob/develop/.github/workflows/lint.yaml).
-          labels: "typo"
-          assignees: kdeldycke
-          branch: fix-typo
-
   lint-awesome:
     name: Lint awesome list
     needs: lint-markdown
