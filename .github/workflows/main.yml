@@ -17,7 +17,7 @@ jobs:
           repository: ${{github.repository}}.wiki
       - name: Generate full TOC
         run: |
-          doctoc --github --notitle Home.md
+          doctoc --github --notitle Git-manual.md
       - name: Set author
         run: git config user.email "you@example.com"
       - name: Set mail
